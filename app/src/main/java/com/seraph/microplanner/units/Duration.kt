@@ -3,17 +3,15 @@ package com.seraph.microplanner.units
 /**
  * Created by Alex on 27.11.2016.
  */
-class Duration internal constructor(millis: Long) {
-    val millis: Long = millis
+class Duration internal constructor(val millis: Long) {
+    val seconds: Float
+        get() = millis / 1000f
 
-    val seconds: Int
-        get() = (millis / 1000).toInt()
+    val minutes: Float
+        get() = seconds / 60f
 
-    val minutes: Int
-        get() = seconds / 60
-
-    val hours: Int
-        get() = minutes / 60
+    val hours: Float
+        get() = minutes / 60f
 
     operator fun plus(other: Duration) = Duration(millis + other.millis)
 }
